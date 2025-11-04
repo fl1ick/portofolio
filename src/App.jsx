@@ -99,7 +99,7 @@ function App() {
     {/* Kontak */}
     <div className="kontak mt-32 sm:p-10 p-0" id="kontak">
       <h1 className="text-4xl mb-2 font-bold text-center" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300" data-aos-once="true">kontak</h1>
-      <p className="text-base/loose text-center mb-10 opacity-50" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300" data-aos-once="true">mari yuk</p>
+      <p className="text-base/loose text-center mb-10 opacity-50" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300" data-aos-once="true">Silakan Bisa Menghubungi Melewati ini</p>
       <form action="https://formsubmit.co/spaceworkbgs@gmail.com" method="POST" className="bg-zinc-800 p-10 sm:w-fit w-full mx-auto rounded-md" autoComplete="off" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="700" data-aos-once="true">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
