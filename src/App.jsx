@@ -98,10 +98,12 @@ const handleSubmit = async (event) => {
               </p>
               <div className="flex items-center sm:gap-4 gap-2">
                 <a
-                  href="#"
+                  href="/CV-Bagas.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`${theme.accent} p-4 rounded-2xl text-white ${theme.hover}`}
                 >
-                  Download CV <i className="ri-download-line ri-lg"></i>
+                  Preview CV <i className="ri-eye-line ri-lg"></i>
                 </a>
                 <a
                   href="#proyek"
