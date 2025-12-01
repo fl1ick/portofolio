@@ -17,6 +17,8 @@ import Tools8 from "/assets/tools/github.png";
 import Tools9 from "/assets/tools/ai.png";
 import Tools10 from "/assets/tools/canva.png";
 import Tools11 from "/assets/tools/figma.png";
+import Tools12 from "/assets/tools/word.png";
+import Tools13 from "/assets/tools/excel.png";
 
 export const listTools = [
   {
@@ -87,6 +89,20 @@ export const listTools = [
     gambar: Tools11,
     nama: "Figma",
     ket: "Design App",
+    dad: "1000",
+  },
+    {
+    id: 11,
+    gambar: Tools12,
+    nama: "Word",
+    ket: "Office App",
+    dad: "1000",
+  },
+      {
+    id: 12,
+    gambar: Tools13,
+    nama: "Excel",
+    ket: "Office App",
     dad: "1000",
   },
 ];

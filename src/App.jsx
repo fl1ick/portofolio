@@ -30,12 +30,10 @@ function App() {
         hover: "hover:bg-violet-600",
       };
 
-      const [loading, setLoading] = useState(false);
-      const [success, setSuccess] = useState(false);
-      // State feedback Web3Forms
-const [result, setResult] = useState("");
+const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState(false);
 
-// Fungsi submit Web3Forms
+const [result, setResult] = useState("");
 const handleSubmit = async (event) => {
   event.preventDefault();
   setLoading(true);
@@ -59,9 +57,7 @@ const handleSubmit = async (event) => {
     setLoading(false);
     setResult("Terjadi kesalahan, coba lagi.");
   }
-};
-
-      
+};    
       return (
         <div
           className={`${theme.bg} min-h-screen transition-all duration-700 ease-in-out`}
@@ -170,8 +166,7 @@ const handleSubmit = async (event) => {
               <p
                 className={`xl:w-2/5 lg:w-2/4 md:w-2/3 sm:w-3/4 w-full text-base/loose opacity-70 ${theme.text}`} data-aos="fade-up" data-aos-duration="200" data-aos-delay="300"
               >
-                Berikut ini beberapa tools yang biasa saya gunakan untuk pembuatan
-                website atau desain.
+                Berikut ini beberapa tools dan sofware yang saya kuasai
               </p>
               <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
                 {listTools.map((tool) => (
