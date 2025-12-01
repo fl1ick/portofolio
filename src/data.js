@@ -126,7 +126,7 @@ export const listProyek = [
   {
     id: 2,
     gambar: Proyek2,
-    nama: "Website Pemerintah",
+    nama: "Website Arsip",
     desk: "Sebagai platform pengolahan arsip digital atau manajemen arsip bagi instansi pemerintah daerah memperbaiki sistem pencatatan, penyimpanan, pemeliharaan dokumen arsip.",
     tools: ["HTML", "CSS", "Laravel", "AOS", "Vite", "Scheduler"],
     dad: "300",
