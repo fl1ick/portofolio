@@ -251,7 +251,7 @@ const handleSubmit = async (event) => {
         <h2 className="font-bold text-lg">Preview Website</h2>
         <button
           onClick={() => setShowModal(true)}
-          className="text-xl font-bold hover:text-red-500"
+          className="text-xl font-bold text-yellow-500 hover:text-red-500"
         >
            Kembali ✕
         </button>
