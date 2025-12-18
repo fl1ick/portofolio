@@ -129,7 +129,7 @@ export const listProyek = [
     gambar: Proyek2,
     nama: "Website Arsip",
     desk: "Sebagai platform pengolahan arsip digital atau manajemen arsip bagi instansi pemerintah daerah memperbaiki sistem pencatatan, penyimpanan, pemeliharaan dokumen arsip.",
-    tools: ["HTML", "CSS", "Laravel", "AOS", "Vite", "Scheduler"],
+    tools: ["HTML", "CSS", "Laravel", "AOS", "Vite", "Scheduler","MySQL"],
     dad: "300",
     link: "https://portofolio-2-jet.vercel.app/",
   },
@@ -138,9 +138,18 @@ export const listProyek = [
     gambar: Proyek3,
     nama: "Landing Page Saas AI",
     desk: "Landing page InovaTech AI dirancang dengan tampilan modern dan futuristik bernuansa gelap yang menonjolkan kesan teknologi canggih. Pada bagian hero section, terdapat headline kuat “Code Faster, Build Better With InovaTech AI” yang secara langsung menyampaikan nilai utama produk, yaitu membantu developer menulis kode lebih cepat dan lebih baik dengan dukungan kecerdasan buatan.",
-    tools: ["Figma", "TailwindCSS", "Reack", "Javascript",],
+    tools: ["Figma", "TailwindCSS", "React", "Javascript",],
     dad: "300",
     link: "https://ai-saa-s-landing-page-murex.vercel.app/",
+  },
+  {
+    id: 4,
+    gambar: Proyek4,
+    nama: "E-Commerce Multi vendor",
+    desk: "Marketplace multi-vendor yang mempertemukan Anda dengan penjual gadget pilihan. Mulai dari smartphone, laptop, hingga aksesoris terbaru — kualitas terjamin, transaksi aman, dan pengiriman cepat.",
+    tools: ["NextJs", "TailwindCSS", "React", "Javascript","Prisma"],
+    dad: "300",
+    link: "https://react-ecommerce-xi-nine.vercel.app/",
   },
 
   // {
