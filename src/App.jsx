@@ -5,6 +5,8 @@ import { listTools } from "./data";
 import { listProyek } from "./data";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState("");
   // state untuk ganti tema
   const [isLight, setIsLight] = useState(false);
 
@@ -225,18 +227,49 @@ const handleSubmit = async (event) => {
                       ))}
                     </div>
                     <div className="mt-8 text-center">
-                      <a
-                        href="#"
-                        className={`${theme.accent} p-3 rounded-lg block text-white ${theme.hover}`}
-                      >
-                        Lihat Website
-                      </a>
+                    <button
+                      onClick={() => {
+                        setPreviewUrl(proyek.link); // pastikan ada link di data
+                        setShowModal(true);
+                      }}
+                      className={`${theme.accent} p-3 rounded-lg block w-full text-white ${theme.hover}`}
+                    >
+                      Lihat Website
+                    </button>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+          {showModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+    <div className="bg-white w-full max-w-5xl rounded-xl overflow-hidden relative">
+
+      {/* Header */}
+      <div className="flex justify-between items-center p-4 border-b">
+        <h2 className="font-bold text-lg">Preview Website</h2>
+        <button
+          onClick={() => setShowModal(false)}
+          className="text-xl font-bold hover:text-red-500"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="h-[70vh]">
+        <iframe
+          src={previewUrl}
+          title="Preview Website"
+          className="w-full h-full"
+        />
+      </div>
+
+    </div>
+  </div>
+)}
+
 
           {/* Kontak Section */}
           <div className="kontak mt-16 sm:p-10 p-0" id="kontak">

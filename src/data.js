@@ -131,14 +131,15 @@ export const listProyek = [
     tools: ["HTML", "CSS", "Laravel", "AOS", "Vite", "Scheduler"],
     dad: "300",
   },
-  // {
-  //   id: 3,
-  //   gambar: Proyek3,
-  //   nama: "Web Pernikahan 2.0",
-  //   desk: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, laborum!",
-  //   tools: ["Vite", "ReactJS", "TailwindCSS", "AOS"],
-  //   dad: "400",
-  // },
+    {
+    id: 3,
+    gambar: Proyek3,
+    nama: "Landing Page Saas AI",
+    desk: "Landing page InovaTech AI dirancang dengan tampilan modern dan futuristik bernuansa gelap yang menonjolkan kesan teknologi canggih. Pada bagian hero section, terdapat headline kuat “Code Faster, Build Better With InovaTech AI” yang secara langsung menyampaikan nilai utama produk, yaitu membantu developer menulis kode lebih cepat dan lebih baik dengan dukungan kecerdasan buatan.",
+    tools: ["Figma", "TailwindCSS", "Reack", "Javascript",],
+    dad: "300",
+  },
+
   // {
   //   id: 4,
   //   gambar: Proyek4,
