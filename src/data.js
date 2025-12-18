@@ -122,6 +122,7 @@ export const listProyek = [
     desk: "Website kesehatan adalah platform digital yang menyediakan informasi . Tujuan utama website ini adalah meningkatkan perilaku hidup sehat melalui penyediaan konten yang akurat, terpercaya, dan mudah diakses.",
     tools: ["HTML", "CSS", "Javascript", "AOS"],
     dad: "200",
+    link: "#"
   },
   {
     id: 2,
@@ -130,6 +131,7 @@ export const listProyek = [
     desk: "Sebagai platform pengolahan arsip digital atau manajemen arsip bagi instansi pemerintah daerah memperbaiki sistem pencatatan, penyimpanan, pemeliharaan dokumen arsip.",
     tools: ["HTML", "CSS", "Laravel", "AOS", "Vite", "Scheduler"],
     dad: "300",
+    link: "https://portofolio-2-jet.vercel.app/",
   },
     {
     id: 3,
@@ -138,6 +140,7 @@ export const listProyek = [
     desk: "Landing page InovaTech AI dirancang dengan tampilan modern dan futuristik bernuansa gelap yang menonjolkan kesan teknologi canggih. Pada bagian hero section, terdapat headline kuat “Code Faster, Build Better With InovaTech AI” yang secara langsung menyampaikan nilai utama produk, yaitu membantu developer menulis kode lebih cepat dan lebih baik dengan dukungan kecerdasan buatan.",
     tools: ["Figma", "TailwindCSS", "Reack", "Javascript",],
     dad: "300",
+    link: "https://ai-saa-s-landing-page-murex.vercel.app/",
   },
 
   // {
