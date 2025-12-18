@@ -253,7 +253,7 @@ const handleSubmit = async (event) => {
           onClick={() => setShowModal(false)}
           className="text-xl font-bold hover:text-red-500"
         >
-          ✕
+           Kembali ✕
         </button>
       </div>
 
