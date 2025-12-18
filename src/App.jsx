@@ -250,7 +250,7 @@ const handleSubmit = async (event) => {
       <div className="flex justify-between items-center p-4 border-b">
         <h2 className="font-bold text-lg">Preview Website</h2>
         <button
-          onClick={() => setShowModal(true)}
+          onClick={() => setShowModal(false)}
           className="text-xl font-bold text-yellow-500 hover:text-red-500"
         >
            Kembali ✕
