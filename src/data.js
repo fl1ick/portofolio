@@ -143,7 +143,7 @@ export const listProyek = [
     gambar: Proyek1,
     nama: "Website Kesehatan",
     desk: "Website kesehatan adalah platform digital yang menyediakan informasi . Tujuan utama website ini adalah meningkatkan perilaku hidup sehat melalui penyediaan konten yang akurat, terpercaya, dan mudah diakses.",
-    tools: ["HTML", "CSS", "Javascript", "AOS"],
+    tools: ["TailwindCSS", "Javascript", "NextJs", "Prisma","Clerk"],
     dad: "200",
     link: "https://portofolio-hms-inovatech.vercel.app/"
   },
@@ -152,7 +152,7 @@ export const listProyek = [
     gambar: Proyek2,
     nama: "Website Arsip",
     desk: "Sebagai platform pengolahan arsip digital atau manajemen arsip bagi instansi pemerintah daerah memperbaiki sistem pencatatan, penyimpanan, pemeliharaan dokumen arsip.",
-    tools: ["HTML", "CSS", "Laravel", "AOS", "Vite", "Scheduler","MySQL"],
+    tools: ["HTML", "CSS", "Laravel", "Vite", "Scheduler","MySQL"],
     dad: "300",
     link: "https://portofolio-2-jet.vercel.app/",
   },
