@@ -122,7 +122,7 @@ export const listProyek = [
     desk: "Website kesehatan adalah platform digital yang menyediakan informasi . Tujuan utama website ini adalah meningkatkan perilaku hidup sehat melalui penyediaan konten yang akurat, terpercaya, dan mudah diakses.",
     tools: ["HTML", "CSS", "Javascript", "AOS"],
     dad: "200",
-    link: "#"
+    link: "https://portofolio-hms-inovatech.vercel.app/"
   },
   {
     id: 2,
