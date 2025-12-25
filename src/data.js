@@ -19,6 +19,9 @@ import Tools10 from "/assets/tools/canva.png";
 import Tools11 from "/assets/tools/figma.png";
 import Tools12 from "/assets/tools/word.png";
 import Tools13 from "/assets/tools/excel.png";
+import Tools14 from "/assets/tools/Prisma.png";
+import Tools15 from "/assets/tools/mysql.png";
+import Tools16 from "/assets/tools/PostGreSQL.png";
 
 export const listTools = [
   {
