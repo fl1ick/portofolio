@@ -20,8 +20,8 @@ import Tools11 from "/assets/tools/figma.png";
 import Tools12 from "/assets/tools/word.png";
 import Tools13 from "/assets/tools/excel.png";
 import Tools14 from "/assets/tools/Prisma.png";
-import Tools15 from "/assets/tools/mysql.png";
-import Tools16 from "/assets/tools/PostGreSQL.png";
+import Tools15 from "/assets/tools/MySQL.png";
+import Tools16 from "/assets/tools/postgresql.png";
 
 export const listTools = [
   {
