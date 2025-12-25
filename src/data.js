@@ -105,6 +105,27 @@ export const listTools = [
     ket: "Office App",
     dad: "1000",
   },
+        {
+    id: 13,
+    gambar: Tools14,
+    nama: "Prisma",
+    ket: "Database",
+    dad: "1000",
+  },
+    {
+    id: 14,
+    gambar: Tools15,
+    nama: "MySql",
+    ket: "Database",
+    dad: "1000",
+  },
+      {
+    id: 15,
+    gambar: Tools16,
+    nama: "PostGreSQL",
+    ket: "Database",
+    dad: "1000",
+  },
 ];
 
 import Proyek1 from "/assets/proyek/proyek1.webp";
