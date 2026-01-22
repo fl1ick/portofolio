@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import DataImage from "./data";
 import { listTools } from "./data";
 import { listProyek } from "./data";
+import Hero3D from './components/band/Hero3D';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -67,57 +68,74 @@ const handleSubmit = async (event) => {
           {/* Navbar */}
           <Navbar isLight={isLight} toggleTheme={toggleTheme} />
 
-          {/* Hero Section */}
-          <div
-            id="beranda"
-            className="hero grid md:grid-cols-2 items-center pt-40 xl:gap-0 gap-6 grid-cols-1 px-6 sm:px-10"
-          >
-            <div className="animate__animated animate__fadeInUp animate__delay-3s">
-              <div
-                className={`flex items-center gap-3 mb-6 ${theme.card} ${theme.border} border w-fit p-4 rounded-2xl`}
-              >
-                <img
-                  src={DataImage.HeroImage}
-                  alt="Hero"
-                  className="w-10 rounded-md"
-                />
-                <q className={`${theme.text}`}>
-                  kode yang indah, Lahir dari ketekunan.😁
-                </q>
-              </div>
-              <h1 className={`text-5xl/tight font-bold mb-6 ${theme.text}`}>
-                Hi, Saya Bagas Maulana
-              </h1>
-              <p className={`text-base/loose mb-6 opacity-70 ${theme.text}`}>
-                Saya mempunyai ketertarikan dalam bidang Programming dan Designer,
-                terutama pada pembuatan Website dan Desain seperti Poster, Pamflet
-                serta Banner. Ketertarikan pada bidang ini sudah berlangsung lebih
-                dari 2 tahun untuk semua bidang.
-              </p>
-              <div className="flex items-center sm:gap-4 gap-2">
-                <a
-                  href="/CV-Bagas.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${theme.accent} p-4 rounded-2xl text-white ${theme.hover}`}
-                >
-                  Preview CV <i className="ri-eye-line ri-lg"></i>
-                </a>
-                <a
-                  href="#proyek"
-                  className={`${theme.card} p-4 rounded-2xl ${theme.text} ${theme.border} border ${theme.hover}`}
-                >
-                  Lihat Proyek <i className="ri-arrow-down-line ri-lg"></i>
-                </a>
-              </div>
-            </div>
-            <img
-              src={DataImage.HeroImage}
-              alt="Hero"
-              className="w-[500px] md:ml-80 ml-auto animate__animated animate__fadeInUp animate__delay-4s rounded-2xl border border-zinc-700"
-              loading="lazy"
-            />
-          </div>
+{/* HERO SECTION */}
+<section
+  id="beranda"
+  className="relative min-h-screen pt-40 px-6 sm:px-10 overflow-hidden"
+>
+  {/* TEXT CONTENT */}
+  <div
+    className="
+      absolute
+      translate-x-[-250px]
+      right-0
+      top-0
+      w-[700px]
+      h-[700px]
+      max-w-full
+      z-10
+      pointer-events-auto
+    "
+  >
+    <Hero3D />
+  </div>
+  <div className="relative z-20 max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-6 mt-36">
+    <div className="animate__animated animate__fadeInUp animate__delay-3s">
+      <div
+        className={`flex items-center gap-3 mb-6 ${theme.card} ${theme.border} border w-fit p-4 rounded-2xl`}
+      >
+        <img
+          src={DataImage.HeroImage}
+          alt="Hero"
+          className="w-10 rounded-md"
+        />
+        <q className={`${theme.text}`}>
+          kode yang indah, Lahir dari ketekunan.😁
+        </q>
+      </div>
+
+      <h1 className={`text-5xl/tight font-bold mb-6 ${theme.text}`}>
+        Hi, Saya Bagas Maulana
+      </h1>
+
+      <p className={`text-base/loose mb-6 opacity-70 ${theme.text}`}>
+        Saya mempunyai ketertarikan dalam bidang Programming dan Designer,
+        terutama pada pembuatan Website dan Desain seperti Poster, Pamflet
+        serta Banner. Ketertarikan pada bidang ini sudah berlangsung lebih
+        dari 2 tahun untuk semua bidang.
+      </p>
+
+      <div className="flex items-center sm:gap-4 gap-2">
+        <a
+          href="/CV-Bagas.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${theme.accent} p-4 rounded-2xl text-white ${theme.hover}`}
+        >
+          Preview CV <i className="ri-eye-line ri-lg"></i>
+        </a>
+
+        <a
+          href="#proyek"
+          className={`${theme.card} p-4 rounded-2xl ${theme.text} ${theme.border} border ${theme.hover}`}
+        >
+          Lihat Proyek <i className="ri-arrow-down-line ri-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
           {/* Tentang Section */}
           <div className="tentang mt-16 py-10 px-6 sm:px-10" id="tentang">
