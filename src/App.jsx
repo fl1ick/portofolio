@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import DataImage from "./data";
 import { listTools } from "./data";
 import { listProyek } from "./data";
-import Hero3D from './components/band/Hero3D';
+import Hero3D from "./components/band/Hero3D";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -33,265 +33,282 @@ function App() {
         hover: "hover:bg-violet-600",
       };
 
-const [loading, setLoading] = useState(false);
-const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-const [result, setResult] = useState("");
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  setLoading(true);
-  setResult("Mengirim...");
+  const [result, setResult] = useState("");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setResult("Mengirim...");
 
-  const formData = new FormData(event.target);
-  formData.append("access_key", "644250bf-556f-479b-b9b7-5ac85a88a164");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "644250bf-556f-479b-b9b7-5ac85a88a164");
 
-  const response = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    body: formData,
-  });
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (data.success) {
-    setLoading(false);
-    setResult("Pesan berhasil terkirim!");
-    event.target.reset();
-  } else {
-    setLoading(false);
-    setResult("Terjadi kesalahan, coba lagi.");
-  }
-};    
-      return (
+    if (data.success) {
+      setLoading(false);
+      setResult("Pesan berhasil terkirim!");
+      event.target.reset();
+    } else {
+      setLoading(false);
+      setResult("Terjadi kesalahan, coba lagi.");
+    }
+  };
+  return (
+    <div
+      className={`${theme.bg} min-h-screen transition-all duration-700 ease-in-out`}
+    >
+      {/* Navbar */}
+      <Navbar isLight={isLight} toggleTheme={toggleTheme} />
+
+      {/* HERO SECTION */}
+      <section
+        id="beranda"
+        className="relative min-h-screen px-4 sm:px-10 overflow-hidden"
+      >
         <div
-          className={`${theme.bg} min-h-screen transition-all duration-700 ease-in-out`}
-        >
-          {/* Navbar */}
-          <Navbar isLight={isLight} toggleTheme={toggleTheme} />
-
-{/* HERO SECTION */}
-<section
-  id="beranda"
-  className="relative min-h-screen pt-40 px-6 sm:px-10 overflow-hidden"
->
-  {/* TEXT CONTENT */}
-  <div
-    className="
+          className="
       absolute
-      translate-x-[-250px]
-      right-0
-      top-0
-      w-[700px]
-      h-[700px]
-      max-w-full
+      right-1/2
+      translate-x-1/2
+      -top-10
+      w-[320px]
+      sm:right-0
+      sm:top-0
+      sm:translate-x-[-250px]
+      sm:w-[700px]
+      sm:h-[700px]
       z-10
       pointer-events-auto
     "
-  >
-    <Hero3D />
-  </div>
-  <div className="relative z-20 max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-6 mt-36">
-    <div className="animate__animated animate__fadeInUp animate__delay-3s">
-      <div
-        className={`flex items-center gap-3 mb-6 ${theme.card} ${theme.border} border w-fit p-4 rounded-2xl`}
-      >
-        <img
-          src={DataImage.HeroImage}
-          alt="Hero"
-          className="w-10 rounded-md"
-        />
-        <q className={`${theme.text}`}>
-          kode yang indah, Lahir dari ketekunan.😁
-        </q>
-      </div>
-
-      <h1 className={`text-5xl/tight font-bold mb-6 ${theme.text}`}>
-        Hi, Saya Bagas Maulana
-      </h1>
-
-      <p className={`text-base/loose mb-6 opacity-70 ${theme.text}`}>
-        Saya mempunyai ketertarikan dalam bidang Programming dan Designer,
-        terutama pada pembuatan Website dan Desain seperti Poster, Pamflet
-        serta Banner. Ketertarikan pada bidang ini sudah berlangsung lebih
-        dari 2 tahun untuk semua bidang.
-      </p>
-
-      <div className="flex items-center sm:gap-4 gap-2">
-        <a
-          href="/CV-Bagas.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${theme.accent} p-4 rounded-2xl text-white ${theme.hover}`}
         >
-          Preview CV <i className="ri-eye-line ri-lg"></i>
-        </a>
+          <Hero3D />
+        </div>
 
-        <a
-          href="#proyek"
-          className={`${theme.card} p-4 rounded-2xl ${theme.text} ${theme.border} border ${theme.hover}`}
-        >
-          Lihat Proyek <i className="ri-arrow-down-line ri-lg"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-          {/* Tentang Section */}
-          <div className="tentang mt-16 py-10 px-6 sm:px-10" id="tentang">
+        {/* CONTENT */}
+        <div className="relative z-20 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-6 pt-52 sm:pt-40">
+          <div className="animate__animated animate__fadeInUp animate__delay-3s text-center md:text-left">
             <div
-              className={`${theme.card} ${theme.border} border xl:w-2/3 lg:w-3/4 w-full mx-auto p-7 rounded-lg`}
+              className={`flex items-center justify-center md:justify-start gap-3 mb-6 ${theme.card} ${theme.border} border w-fit mx-auto md:mx-0 p-4 rounded-2xl`}
             >
               <img
                 src={DataImage.HeroImage}
-                alt="Image"
-                className="w-12 rounded-md mb-10 sm:hidden"
+                alt="Hero"
+                className="w-10 rounded-md"
               />
-              <p className={`text-base/loose mb-10 ${theme.text}`}>
-                Hi, perkenalkan saya Bagas Maulana, seorang Full Stack Web Developer
-                dan Designer untuk UI/UX Design maupun Product Digital. Saya percaya
-                bahwa desain dan fungsionalitas harus berjalan beriringan, sehingga
-                setiap proyek yang saya kembangkan tidak hanya terlihat menarik
-                tetapi juga memberikan pengalaman pengguna yang optimal.
-              </p>
-              <div className="flex items-center justify-between">
+              <q className={`${theme.text}`}>
+                kode yang indah, Lahir dari ketekunan.😁
+              </q>
+            </div>
+
+            <h1 className={`text-3xl sm:text-5xl font-bold mb-6 ${theme.text}`}>
+              Hi, Saya Bagas Maulana
+            </h1>
+
+            <p className={`text-sm sm:text-base mb-6 opacity-70 ${theme.text}`}>
+              Saya mempunyai ketertarikan dalam bidang Programming dan Designer,
+              terutama pada pembuatan Website dan Desain seperti Poster, Pamflet
+              serta Banner. Ketertarikan pada bidang ini sudah berlangsung lebih
+              dari 2 tahun untuk semua bidang.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+              <a
+                href="/CV-Bagas.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${theme.accent} w-full sm:w-auto text-center p-4 rounded-2xl text-white ${theme.hover}`}
+              >
+                Preview CV <i className="ri-eye-line ri-lg"></i>
+              </a>
+
+              <a
+                href="#proyek"
+                className={`${theme.card} w-full sm:w-auto text-center p-4 rounded-2xl ${theme.text} ${theme.border} border ${theme.hover}`}
+              >
+                Lihat Proyek <i className="ri-arrow-down-line ri-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tentang Section */}
+      <div className="tentang mt-16 py-10 px-6 sm:px-10" id="tentang">
+        <div
+          className={`${theme.card} ${theme.border} border xl:w-2/3 lg:w-3/4 w-full mx-auto p-7 rounded-lg`}
+        >
+          <img
+            src={DataImage.HeroImage}
+            alt="Image"
+            className="w-12 rounded-md mb-10 sm:hidden"
+          />
+          <p className={`text-base/loose mb-10 ${theme.text}`}>
+            Hi, perkenalkan saya Bagas Maulana, seorang Full Stack Web Developer
+            dan Designer untuk UI/UX Design maupun Product Digital. Saya percaya
+            bahwa desain dan fungsionalitas harus berjalan beriringan, sehingga
+            setiap proyek yang saya kembangkan tidak hanya terlihat menarik
+            tetapi juga memberikan pengalaman pengguna yang optimal.
+          </p>
+          <div className="flex items-center justify-between">
+            <img
+              src={DataImage.HeroImage}
+              alt="Image"
+              className="w-12 rounded-md sm:block hidden"
+              loading="lazy"
+            />
+            <div className="flex items-center justify-between gap-6">
+              <div>
+                <h1 className={`text-4xl mb-1 ${theme.text}`}>
+                  10 <span className="text-violet-500">+</span>
+                  <p>Proyek Selesai</p>
+                </h1>
+              </div>
+              <div className={`text-4xl mb-1 ${theme.text}`}>
+                <h1>
+                  1 <span className="text-violet-500">+</span>
+                  <p>Tahun Pengalaman</p>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Tools */}
+        <div className="tools mt-16">
+          <h1 className={`text-4xl/snug font-bold mb-4 ${theme.text}`}>
+            Tools yang dipakai
+          </h1>
+          <p
+            className={`xl:w-2/5 lg:w-2/4 md:w-2/3 sm:w-3/4 w-full text-base/loose opacity-70 ${theme.text}`}
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="300"
+          >
+            Berikut ini beberapa tools dan sofware yang saya kuasai
+          </p>
+          <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+            {listTools.map((tool) => (
+              <div
+                key={tool.id}
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-delay={tool.dad}
+                className={`flex items-center gap-2 p-3 ${theme.border} border rounded-md ${theme.hover} group`}
+              >
                 <img
-                  src={DataImage.HeroImage}
-                  alt="Image"
-                  className="w-12 rounded-md sm:block hidden"
+                  src={tool.gambar}
+                  alt="Tools"
+                  className="w-14 bg-opacity-20 p-1 group-hover:scale-105 transition-transform"
                   loading="lazy"
                 />
-                <div className="flex items-center justify-between gap-6">
-                  <div>
-                    <h1 className={`text-4xl mb-1 ${theme.text}`}>
-                      10 <span className="text-violet-500">+</span>
-                      <p>Proyek Selesai</p>
-                    </h1>
-                  </div>
-                  <div className={`text-4xl mb-1 ${theme.text}`}>
-                    <h1>
-                      1 <span className="text-violet-500">+</span>
-                      <p>Tahun Pengalaman</p>
-                    </h1>
-                  </div>
+                <div>
+                  <h4 className={`font-bold ${theme.text}`}>{tool.nama}</h4>
+                  <p className={`opacity-70 ${theme.text}`}>{tool.ket}</p>
                 </div>
               </div>
-            </div>
-
-            {/* Tools */}
-            <div className="tools mt-16">
-              <h1 className={`text-4xl/snug font-bold mb-4 ${theme.text}`}>
-                Tools yang dipakai
-              </h1>
-              <p
-                className={`xl:w-2/5 lg:w-2/4 md:w-2/3 sm:w-3/4 w-full text-base/loose opacity-70 ${theme.text}`} data-aos="fade-up" data-aos-duration="200" data-aos-delay="300"
-              >
-                Berikut ini beberapa tools dan sofware yang saya kuasai
-              </p>
-              <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-                {listTools.map((tool) => (
-                  <div
-                    key={tool.id} data-aos="fade-up" data-aos-duration="2000" data-aos-delay={tool.dad}
-                    className={`flex items-center gap-2 p-3 ${theme.border} border rounded-md ${theme.hover} group`}
-                  >
-                    <img
-                      src={tool.gambar}
-                      alt="Tools"
-                      className="w-14 bg-opacity-20 p-1 group-hover:scale-105 transition-transform"
-                      loading="lazy"
-                    />
-                    <div>
-                      <h4 className={`font-bold ${theme.text}`}>{tool.nama}</h4>
-                      <p className={`opacity-70 ${theme.text}`}>{tool.ket}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
+      </div>
 
-          {/* Proyek Section */}
-          <div className="proyek mt-16 py-10 px-6 sm:px-10" id="proyek">
-            <h1 className={`text-center text-4xl font-bold mb-2 ${theme.text}`} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300">
-              Proyek
-            </h1>
-            <p
-              className={`text-base/loose text-center opacity-70 ${theme.text}`} data-aos="fade-up" data-aos-duration="2000" data-aos-delay="300"
-            >
-              Berikut ini beberapa proyek yang telah saya buat.
-            </p>
-            <div className="proyek-box mt-14 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-              {listProyek.map((proyek) => (
-                <div
-                  key={proyek.id} data-aos="fade-up" data-aos-duration="2000" data-aos-delay={proyek.dad}
-                  className={`p-4 ${theme.card} ${theme.border} border rounded-md`}
-                >
-                  <img src={proyek.gambar} alt="Proyek" loading="lazy" />
-                  <div>
-                    <h1 className={`text-2xl font-bold my-4 ${theme.text}`}>
-                      {proyek.nama}
-                    </h1>
-                    <p className={`text-base/loose mb-4 ${theme.text}`}>
-                      {proyek.desk}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {proyek.tools.map((tool, index) => (
-                        <p
-                          className={`py-1 px-3 ${theme.border} border rounded-md font-semibold ${theme.text}`}
-                          key={index}
-                        >
-                          {tool}
-                        </p>
-                      ))}
-                    </div>
-                    <div className="mt-8 text-center">
-                    <button
-                      onClick={() => {
-                        setPreviewUrl(proyek.link); // pastikan ada link di data
-                        setShowModal(true);
-                      }}
-                      className={`${theme.accent} p-3 rounded-lg block w-full text-white ${theme.hover}`}
-                    >
-                      Lihat Website
-                    </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          {showModal && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-    <div className="bg-white w-full max-w-5xl rounded-xl overflow-hidden relative">
-
-      {/* Header */}
-      <div className="flex justify-between items-center p-4 border-b">
-        <h2 className="font-bold text-lg">Preview Website</h2>
-        <button
-          onClick={() => setShowModal(false)}
-          className="text-xl font-bold text-yellow-500 hover:text-red-500"
+      {/* Proyek Section */}
+      <div className="proyek mt-16 py-10 px-6 sm:px-10" id="proyek">
+        <h1
+          className={`text-center text-4xl font-bold mb-2 ${theme.text}`}
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-delay="300"
         >
-           Kembali ✕
-        </button>
+          Proyek
+        </h1>
+        <p
+          className={`text-base/loose text-center opacity-70 ${theme.text}`}
+          data-aos="fade-up"
+          data-aos-duration="2000"
+          data-aos-delay="300"
+        >
+          Berikut ini beberapa proyek yang telah saya buat.
+        </p>
+        <div className="proyek-box mt-14 grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+          {listProyek.map((proyek) => (
+            <div
+              key={proyek.id}
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay={proyek.dad}
+              className={`p-4 ${theme.card} ${theme.border} border rounded-md`}
+            >
+              <img src={proyek.gambar} alt="Proyek" loading="lazy" />
+              <div>
+                <h1 className={`text-2xl font-bold my-4 ${theme.text}`}>
+                  {proyek.nama}
+                </h1>
+                <p className={`text-base/loose mb-4 ${theme.text}`}>
+                  {proyek.desk}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {proyek.tools.map((tool, index) => (
+                    <p
+                      className={`py-1 px-3 ${theme.border} border rounded-md font-semibold ${theme.text}`}
+                      key={index}
+                    >
+                      {tool}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-8 text-center">
+                  <button
+                    onClick={() => {
+                      setPreviewUrl(proyek.link); // pastikan ada link di data
+                      setShowModal(true);
+                    }}
+                    className={`${theme.accent} p-3 rounded-lg block w-full text-white ${theme.hover}`}
+                  >
+                    Lihat Website
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+          <div className="bg-white w-full max-w-5xl rounded-xl overflow-hidden relative">
+            {/* Header */}
+            <div className="flex justify-between items-center p-4 border-b">
+              <h2 className="font-bold text-lg">Preview Website</h2>
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-xl font-bold text-yellow-500 hover:text-red-500"
+              >
+                Kembali ✕
+              </button>
+            </div>
 
-      {/* Content */}
-      <div className="h-[70vh]">
-        <iframe
-          src={previewUrl}
-          title="Preview Website"
-          className="w-full h-full"
-        />
-      </div>
+            {/* Content */}
+            <div className="h-[70vh]">
+              <iframe
+                src={previewUrl}
+                title="Preview Website"
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
-    </div>
-  </div>
-)}
-
-
-          {/* Kontak Section */}
-          <div className="kontak mt-16 sm:p-10 p-0" id="kontak">
-        <h1 className={`text-4xl mb-2 font-bold text-center ${theme.text}`}> 
+      {/* Kontak Section */}
+      <div className="kontak mt-16 sm:p-10 p-0" id="kontak">
+        <h1 className={`text-4xl mb-2 font-bold text-center ${theme.text}`}>
           Kontak
         </h1>
         <p
@@ -306,11 +323,14 @@ const handleSubmit = async (event) => {
         >
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-              <label className={`font-semibold ${theme.text}`}>Nama Lengkap</label>
+              <label className={`font-semibold ${theme.text}`}>
+                Nama Lengkap
+              </label>
               <input
                 type="text"
                 name="name"
-                placeholder="Masukan Nama..."z
+                placeholder="Masukan Nama..."
+                z
                 className={`${theme.border} border p-2 rounded-md`}
                 required
               />
@@ -339,7 +359,9 @@ const handleSubmit = async (event) => {
             </div>
 
             {result && (
-              <p className="text-center font-semibold text-green-500">{result}</p>
+              <p className="text-center font-semibold text-green-500">
+                {result}
+              </p>
             )}
 
             <div className="text-center">
@@ -353,9 +375,9 @@ const handleSubmit = async (event) => {
             </div>
           </div>
         </form>
-        </div>
-        </div>
-      );
+      </div>
+    </div>
+  );
 }
 
 export default App;
