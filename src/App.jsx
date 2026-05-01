@@ -77,7 +77,14 @@ function App() {
 
   const toggleTheme = () => setIsLight((v) => !v);
   const colors = isLight ? lightTheme : darkTheme;
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
   const theme = isLight
     ? {
         bg: "bg-[#FFF8ED]",
@@ -226,19 +233,23 @@ function App() {
         id="beranda"
         className="relative min-h-screen px-4 sm:px-10 overflow-hidden"
       >
-        {/*
-          UnicornScene: lebar 900px, geser ke kanan melewati edge layar (-mr)
-          sehingga gambar tidak terpotong dan gradient kanan menutup sempurna
-        */}
         <div
           className="absolute top-0 right-0 z-10 pointer-events-none"
-          style={{ width: "900px", height: "900px", marginRight: "100px" }}
+          style={{
+            width: isMobile ? "100vw" : "900px",
+            height: isMobile ? "100%" : "900px",
+            marginRight: isMobile ? "0px" : "100px",
+            opacity: isMobile ? 0.6 : 1,
+            left: isMobile ? "0" : "auto",
+            right: "0",
+          }}
         >
           <UnicornScene
+            key={isMobile ? "mobile" : "desktop"}
             projectId="JFLwWuSJyMN5OO9EgP4U"
-            width="900px"
-            height="900px"
-            scale={1}
+            width={isMobile ? "100vw" : "900px"}
+            height={isMobile ? "100%" : "900px"}
+            scale={isMobile ? 0.7 : 1}
             dpi={1.5}
             sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@2.1.11/dist/unicornStudio.umd.js"
           />
@@ -278,7 +289,7 @@ function App() {
           <div className="animate__animated animate__fadeInUp animate__delay-3s text-center md:text-left">
             {/* Quote card */}
             <div
-              className={`flex items-center justify-center md:justify-start gap-3 mb-6 ${theme.card} ${theme.border} border w-fit mx-auto md:mx-0 p-4 rounded-2xl`}
+              className={`hidden md:flex items-center justify-center md:justify-start gap-3 mb-6 ${theme.card} ${theme.border} border w-fit mx-auto md:mx-0 p-4 rounded-2xl`}
             >
               <img
                 src={DataImage.HeroImage}
@@ -486,69 +497,118 @@ function App() {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 sm:px-4">
           <div
-            className="flex justify-between items-center p-3 sm:p-4 border-b"
-            style={{ borderColor: colors.border }}
+            className="w-full max-w-2xl rounded-xl overflow-hidden flex flex-col shadow-2xl"
+            style={{
+              background: colors.card,
+              border: `1px solid ${colors.border}`,
+            }}
           >
-            <h2
-              className="font-bold text-sm sm:text-lg"
-              style={{ color: colors.text }}
-            >
-              Preview Website
-            </h2>
-
-            <div className="flex items-center gap-2 sm:gap-3">
-              {/* Fullscreen */}
-              <a
-                href={previewUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1 rounded-md text-[10px] sm:text-sm font-semibold bg-yellow-500 text-black hover:opacity-80 transition"
-              >
-                Full Screen ↗
-              </a>
-
-              {/* Close */}
-              <button
-                onClick={() => setShowModal(false)}
-                className="text-sm sm:text-xl font-bold text-yellow-500 hover:text-red-500"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Info Demo */}
+            {/* Header */}
             <div
-              className="p-3 sm:p-4 border-b text-xs sm:text-sm"
-              style={{
-                borderColor: colors.border,
-                background: isLight ? "#FFF3CD" : "#1C1A00",
-              }}
+              className="flex items-center justify-between px-4 py-3 border-b"
+              style={{ borderColor: colors.border }}
             >
-              <p className="font-semibold text-yellow-600 mb-2">
-                Informasi Demo
-              </p>
-
-              <p style={{ color: colors.text }}>
-                {selectedProject?.demo?.keterangan}
-              </p>
-
-              {selectedProject?.demo?.tersedia && (
-                <div className="mt-3 space-y-1">
-                  <p style={{ color: colors.text }}>
-                    Email: {selectedProject?.demo?.email}
-                  </p>
-
-                  <p style={{ color: colors.text }}>
-                    Password: {selectedProject?.demo?.password}
-                  </p>
-                </div>
-              )}
+              <h2
+                className="text-sm sm:text-base font-semibold"
+                style={{ color: colors.text }}
+              >
+                Preview Website
+              </h2>
+              <div className="flex items-center gap-2">
+                <a
+                  href={previewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold bg-yellow-400 text-yellow-950 hover:bg-yellow-300 transition"
+                >
+                  Full Screen
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                    <path
+                      d="M7 2h3v3M10 2L6.5 5.5M5 10H2V7M2 10l3.5-3.5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="w-7 h-7 flex items-center justify-center rounded-md border text-sm hover:text-red-500 transition"
+                  style={{ borderColor: colors.border, color: colors.muted }}
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
-            {/* Preview */}
+            {/* Info Demo Banner */}
+            {selectedProject?.demo && (
+              <div
+                className="flex gap-3 px-4 py-3 text-xs border-b"
+                style={{
+                  borderColor: "#fde047",
+                  background: isLight ? "#fefce8" : "#1c1700",
+                }}
+              >
+                <svg
+                  className="mt-0.5 shrink-0"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="7"
+                    stroke="#ca8a04"
+                    strokeWidth="1.2"
+                  />
+                  <path
+                    d="M8 5v3.5M8 10.5v.5"
+                    stroke="#ca8a04"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div>
+                  <p
+                    className="font-semibold mb-1"
+                    style={{ color: isLight ? "#92400e" : "#fbbf24" }}
+                  >
+                    Informasi Demo
+                  </p>
+                  <p
+                    className="mb-2 leading-relaxed"
+                    style={{ color: isLight ? "#713f12" : "#fde68a" }}
+                  >
+                    {selectedProject.demo.keterangan}
+                  </p>
+                  {selectedProject.demo.tersedia && (
+                    <div className="flex flex-wrap gap-x-4 gap-y-1">
+                      <span style={{ color: isLight ? "#713f12" : "#fde68a" }}>
+                        Email:{" "}
+                        <strong className="font-medium">
+                          {selectedProject.demo.email}
+                        </strong>
+                      </span>
+                      <span style={{ color: isLight ? "#713f12" : "#fde68a" }}>
+                        Password:{" "}
+                        <strong className="font-medium">
+                          {selectedProject.demo.password}
+                        </strong>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* iframe */}
             <iframe
               src={previewUrl}
-              className="w-full h-[55vh] sm:h-[500px]"
+              className="w-full h-[55vh] sm:h-[480px]"
               title="Preview Website"
             />
           </div>
