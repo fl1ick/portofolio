@@ -139,13 +139,13 @@ import Proyek6 from "/assets/proyek/proyek6.webp";
 
 export const listProyek = [
   {
-    id: 1,
-    gambar: Proyek1,
-    nama: "Website Kesehatan",
-    desk: "Website kesehatan adalah platform digital yang menyediakan informasi . Tujuan utama website ini adalah meningkatkan perilaku hidup sehat melalui penyediaan konten yang akurat, terpercaya, dan mudah diakses.",
-    tools: ["TailwindCSS", "Javascript", "NextJs", "Prisma","Clerk"],
-    dad: "200",
-    link: "https://portofolio-hms-inovatech.vercel.app/"
+id: 1,
+gambar: Proyek1,
+nama: "Website Barbershop",
+desk: "Website barbershop modern yang menyediakan layanan booking cukur online, informasi barber profesional, katalog gaya rambut, jam operasional, dan pengalaman pengguna yang responsif serta elegan untuk memudahkan pelanggan melakukan reservasi kapan saja.",
+tools: ["React", "Vite", "TailwindCSS", "Javascript", "Supabase"],
+dad: "200",
+link: "https://gsap-barber.vercel.app/"
   },
   {
     id: 2,
