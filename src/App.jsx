@@ -435,11 +435,11 @@ function App() {
               {selectedProject?.demo?.tersedia && (
                 <div className="mt-3 space-y-1">
                   <p style={{ color: colors.text }}>
-                    Email: {selectedProject.demo.email}
+                    Email: {selectedProject?.demo?.email}
                   </p>
 
                   <p style={{ color: colors.text }}>
-                    Password: {selectedProject.demo.password}
+                    Password: {selectedProject?.demo?.password}
                   </p>
                 </div>
               )}
