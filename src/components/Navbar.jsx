@@ -1,65 +1,55 @@
 import { useState, useEffect } from "react";
 
 const Navbar = ({ isLight, toggleTheme }) => {
-  const [active, setActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setActive(window.scrollY > 150);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 150);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // tema navbar sinkron dengan App.jsx
   const theme = isLight
     ? {
-        bg: active ? "bg-[#FFE8CC]/80 backdrop-blur-md shadow-md" : "bg-transparent",
+        bg: scrolled
+          ? "bg-[#FFE8CC]/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent",
         text: "text-[#3E2C1C]",
         accent: "bg-[#FFB347] hover:bg-[#FFD9A0] text-white",
+        border: "border-[#E3C6A0]",
       }
     : {
-        bg: active ? "bg-zinc-900/80 backdrop-blur-md shadow-md" : "bg-transparent",
+        bg: scrolled
+          ? "bg-[#111113]/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent",
         text: "text-white",
         accent: "bg-violet-700 hover:bg-violet-600 text-white",
+        border: "border-[#2E2E33]",
       };
 
   return (
     <nav
-      className={`navbar fixed top-0 left-0 w-full z-50 transition-all duration-500 ${theme.bg}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${theme.bg}`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <div className="logo">
-          <h1 className={`text-2xl font-bold ${theme.text}`}>Portofolio</h1>
-        </div>
+        <h1 className={`text-2xl font-bold ${theme.text}`}>Portofolio</h1>
 
         {/* Menu */}
-        <ul className="flex items-center sm:gap-10 gap-5">
-          <li>
-            <a href="#beranda" className={`${theme.text} hover:opacity-70 font-medium`}>
-              Beranda
-            </a>
-          </li>
-          <li>
-            <a href="#tentang" className={`${theme.text} hover:opacity-70 font-medium`}>
-              Tentang
-            </a>
-          </li>
-          <li>
-            <a href="#proyek" className={`${theme.text} hover:opacity-70 font-medium`}>
-              Proyek
-            </a>
-          </li>
-          <li>
-            <a href="#kontak" className={`${theme.text} hover:opacity-70 font-medium`}>
-              Kontak
-            </a>
-          </li>
+        <ul className="hidden sm:flex items-center gap-8">
+          {["beranda", "tentang", "proyek", "kontak"].map((item) => (
+            <li key={item}>
+              <a
+                href={`#${item}`}
+                className={`${theme.text} hover:opacity-60 font-medium capitalize transition-opacity duration-200`}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* Tombol Toggle Tema */}
+        {/* Toggle Tema */}
         <button
           onClick={toggleTheme}
           className={`${theme.accent} px-4 py-2 rounded-xl font-semibold transition-all duration-300`}

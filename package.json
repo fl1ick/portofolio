@@ -22,7 +22,8 @@
     "react-dom": "^19.1.1",
     "remixicon": "^4.7.0",
     "tailwindcss": "^4.1.16",
-    "three": "^0.182.0"
+    "three": "^0.182.0",
+    "unicornstudio-react": "^2.1.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
