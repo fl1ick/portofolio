@@ -397,30 +397,37 @@ function App() {
 
       {/* Modal Preview */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 sm:px-4">
           <div
-            className="w-full max-w-5xl rounded-xl overflow-hidden relative"
+            className="w-full max-w-5xl rounded-xl overflow-hidden relative mx-auto max-h-[95vh] flex flex-col"
             style={{
               background: colors.card,
               border: `1px solid ${colors.border}`,
             }}
           >
+            {/* Header */}
             <div
-              className="flex justify-between items-center p-4 border-b"
+              className="flex justify-between items-center p-3 sm:p-4 border-b"
               style={{ borderColor: colors.border }}
             >
-              <h2 className="font-bold text-lg" style={{ color: colors.text }}>
+              <h2
+                className="font-bold text-sm sm:text-lg"
+                style={{ color: colors.text }}
+              >
                 Preview Website
               </h2>
+
               <button
                 onClick={() => setShowModal(false)}
-                className="text-xl font-bold text-yellow-500 hover:text-red-500"
+                className="text-sm sm:text-xl font-bold text-yellow-500 hover:text-red-500"
               >
                 Kembali ✕
               </button>
             </div>
+
+            {/* Info Demo */}
             <div
-              className="p-4 border-b text-sm"
+              className="p-3 sm:p-4 border-b text-xs sm:text-sm"
               style={{
                 borderColor: colors.border,
                 background: isLight ? "#FFF3CD" : "#1C1A00",
@@ -446,11 +453,13 @@ function App() {
                 </div>
               )}
             </div>
+
+            {/* Preview */}
             <iframe
               src={previewUrl}
-              className="w-full h-[500px]"
+              className="w-full h-[55vh] sm:h-[500px]"
               title="Preview Website"
-            ></iframe>
+            />
           </div>
         </div>
       )}
