@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import DataImage from "./data";
 import { listTools } from "./data";
@@ -67,6 +67,7 @@ function useTypingEffect(
 }
 
 function App() {
+  const [showPdfModal, setShowPdfModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [previewUrl, setPreviewUrl] = useState("");
   const [selectedProject, setSelectedProject] = useState(null);
@@ -100,9 +101,9 @@ function App() {
       };
 
   const typedText = useTypingEffect([
-    "Bagas Maulana",
-    "Full Stack Dev",
-    "UI/UX Designer",
+    "Bagas Maulana.",
+    "Web Developer.",
+    "Bagas Maulana.",
   ]);
 
   const handleSubmit = async (event) => {
@@ -125,11 +126,99 @@ function App() {
       setResult("Terjadi kesalahan, coba lagi.");
     }
   };
+  function RainCanvas({ isLight }) {
+    const canvasRef = useRef(null);
+    const isLightRef = useRef(isLight);
+    const dropsRef = useRef([]);
+    const animIdRef = useRef(null);
+
+    useEffect(() => {
+      isLightRef.current = isLight;
+    }, [isLight]);
+
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      dropsRef.current = Array.from({ length: 150 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        len: 10 + Math.random() * 22,
+        speed: 6 + Math.random() * 10,
+        alpha: 0.12 + Math.random() * 0.3,
+        width: 0.5 + Math.random() * 1,
+      }));
+
+      const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const color = isLightRef.current
+          ? "rgba(60,120,200,"
+          : "rgba(100,180,255,";
+        for (const d of dropsRef.current) {
+          ctx.beginPath();
+          ctx.moveTo(d.x, d.y);
+          ctx.lineTo(d.x - d.width * 0.4, d.y + d.len);
+          ctx.strokeStyle = color + d.alpha + ")";
+          ctx.lineWidth = d.width;
+          ctx.stroke();
+          d.y += d.speed;
+          if (d.y - d.len > canvas.height) {
+            d.y = -d.len - Math.random() * 80;
+            d.x = Math.random() * canvas.width;
+            d.speed = 6 + Math.random() * 10;
+          }
+        }
+        animIdRef.current = requestAnimationFrame(draw);
+      };
+
+      draw();
+
+      // fallback: pastikan animasi tidak mati
+      const intervalId = setInterval(() => {
+        if (!animIdRef.current) {
+          draw();
+        }
+      }, 100);
+
+      const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+
+      window.addEventListener("resize", resize);
+
+      return () => {
+        cancelAnimationFrame(animIdRef.current);
+        clearInterval(intervalId);
+        window.removeEventListener("resize", resize);
+      };
+    }, []);
+
+    return (
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+          zIndex: 5,
+        }}
+      />
+    );
+  }
 
   return (
     <div
       className={`${theme.bg} min-h-screen transition-all duration-700 ease-in-out`}
+      style={{ position: "relative" }}
     >
+      <RainCanvas isLight={isLight} />
       <Navbar isLight={isLight} toggleTheme={toggleTheme} />
 
       {/* ── HERO SECTION ── */}
@@ -227,14 +316,12 @@ function App() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-              <a
-                href="/CV-Bagas.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setShowPdfModal(true)}
                 className={`${theme.accent} w-full sm:w-auto text-center p-4 rounded-2xl text-white ${theme.hover} transition-colors duration-300`}
               >
                 Preview CV <i className="ri-eye-line ri-lg"></i>
-              </a>
+              </button>
               <a
                 href="#proyek"
                 className={`${theme.card} w-full sm:w-auto text-center p-4 rounded-2xl ${theme.text} ${theme.border} border ${theme.hover} transition-colors duration-300`}
@@ -540,8 +627,59 @@ function App() {
           50% { opacity: 0; }
         }
       `}</style>
+      {/* Modal PDF CV */}
+      {showPdfModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 sm:px-4">
+          <div
+            className="w-full max-w-3xl rounded-xl overflow-hidden"
+            style={{
+              background: colors.card,
+              border: `1px solid ${colors.border}`,
+            }}
+          >
+            <div
+              className="flex justify-between items-center p-3 sm:p-4 border-b"
+              style={{ borderColor: colors.border }}
+            >
+              <h2
+                className="font-bold text-sm sm:text-lg"
+                style={{ color: colors.text }}
+              >
+                Preview CV — Bagas Maulana
+              </h2>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <a
+                  href="/CV-Bagas.pdf"
+                  download
+                  className="px-3 py-1 rounded-md text-[10px] sm:text-sm font-semibold bg-yellow-500 text-black hover:opacity-80 transition"
+                >
+                  Download ↓
+                </a>
+                <button
+                  onClick={() => setShowPdfModal(false)}
+                  className="text-sm sm:text-xl font-bold text-yellow-500 hover:text-red-500"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <iframe
+              src="/CV-Bagas.pdf"
+              className="w-full"
+              style={{ height: "80vh" }}
+              title="Preview CV Bagas Maulana"
+            />
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 }
-
 export default App;
