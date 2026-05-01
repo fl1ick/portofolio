@@ -69,6 +69,7 @@ function useTypingEffect(
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [previewUrl, setPreviewUrl] = useState("");
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isLight, setIsLight] = useState(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
