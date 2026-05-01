@@ -424,9 +424,25 @@ function App() {
                 background: isLight ? "#FFF3CD" : "#1C1A00",
               }}
             >
-              <p className="font-semibold text-yellow-600">Demo Login:</p>
-              <p style={{ color: colors.text }}>Email: demo@gmail.com</p>
-              <p style={{ color: colors.text }}>Password: 123456</p>
+              <p className="font-semibold text-yellow-600 mb-2">
+                Informasi Demo
+              </p>
+
+              <p style={{ color: colors.text }}>
+                {selectedProject?.demo?.keterangan}
+              </p>
+
+              {selectedProject?.demo?.tersedia && (
+                <div className="mt-3 space-y-1">
+                  <p style={{ color: colors.text }}>
+                    Email: {selectedProject.demo.email}
+                  </p>
+
+                  <p style={{ color: colors.text }}>
+                    Password: {selectedProject.demo.password}
+                  </p>
+                </div>
+              )}
             </div>
             <iframe
               src={previewUrl}

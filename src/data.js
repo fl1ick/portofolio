@@ -139,48 +139,86 @@ import Proyek6 from "/assets/proyek/proyek6.webp";
 
 export const listProyek = [
   {
-id: 1,
-gambar: Proyek1,
-nama: "Website Barbershop",
-desk: "Website barbershop modern yang menyediakan layanan booking cukur online, informasi barber profesional, katalog gaya rambut, jam operasional, dan pengalaman pengguna yang responsif serta elegan untuk memudahkan pelanggan melakukan reservasi kapan saja.",
-tools: ["React", "Vite", "TailwindCSS", "Javascript", "Supabase"],
-dad: "200",
-link: "https://gsap-barber.vercel.app/"
+    id: 1,
+    gambar: Proyek1,
+    nama: "Website Barbershop",
+    desk: "Website barbershop modern yang menyediakan layanan booking cukur online, informasi barber profesional, katalog gaya rambut, jam operasional, dan pengalaman pengguna yang responsif serta elegan untuk memudahkan pelanggan melakukan reservasi kapan saja.",
+    tools: ["React", "Vite", "TailwindCSS", "Javascript", "Supabase"],
+    dad: "200",
+    link: "https://gsap-barber.vercel.app/",
+
+    demo: {
+      tersedia: true,
+      keterangan:
+        "Project ini memiliki halaman admin untuk mengelola layanan, barber, jam operasional, dan data toko.",
+      email: "demo@gmail.com",
+      password: "123456",
+    },
   },
+
   {
     id: 2,
     gambar: Proyek2,
     nama: "Website Arsip",
     desk: "Sebagai platform pengolahan arsip digital atau manajemen arsip bagi instansi pemerintah daerah memperbaiki sistem pencatatan, penyimpanan, pemeliharaan dokumen arsip.",
-    tools: ["HTML", "CSS", "Laravel", "Vite", "Scheduler","MySQL"],
+    tools: ["HTML", "CSS", "Laravel", "Vite", "Scheduler", "MySQL"],
     dad: "300",
     link: "https://portofolio-2-jet.vercel.app/",
+
+    demo: {
+      tersedia: false,
+      keterangan:
+        "Project ini hanya menampilkan frontend/demo tampilan dan belum menyediakan akses admin publik.",
+    },
   },
-    {
+
+  {
     id: 3,
     gambar: Proyek3,
     nama: "Landing Page Saas AI",
-    desk: "Landing page InovaTech AI dirancang dengan tampilan modern dan futuristik bernuansa gelap yang menonjolkan kesan teknologi canggih. Pada bagian hero section, terdapat headline kuat “Code Faster, Build Better With InovaTech AI” yang secara langsung menyampaikan nilai utama produk, yaitu membantu developer menulis kode lebih cepat dan lebih baik dengan dukungan kecerdasan buatan.",
-    tools: ["Figma", "TailwindCSS", "React", "Javascript",],
+    desk: "Landing page InovaTech AI dirancang dengan tampilan modern dan futuristik bernuansa gelap yang menonjolkan kesan teknologi canggih.",
+    tools: ["Figma", "TailwindCSS", "React", "Javascript"],
     dad: "300",
     link: "https://ai-saa-s-landing-page-murex.vercel.app/",
+
+    demo: {
+      tersedia: false,
+      keterangan:
+        "Landing page ini fokus pada tampilan UI/UX dan animasi interaktif sehingga tidak memiliki dashboard admin.",
+    },
   },
+
   {
     id: 4,
     gambar: Proyek4,
     nama: "E-Commerce Multi vendor",
-    desk: "Marketplace multi-vendor yang mempertemukan Anda dengan penjual gadget pilihan. Mulai dari smartphone, laptop, hingga aksesoris terbaru — kualitas terjamin, transaksi aman, dan pengiriman cepat.",
-    tools: ["NextJs", "TailwindCSS", "React", "Javascript","Prisma"],
+    desk: "Marketplace multi-vendor yang mempertemukan Anda dengan penjual gadget pilihan.",
+    tools: ["NextJs", "TailwindCSS", "React", "Javascript", "Prisma"],
     dad: "300",
     link: "https://react-ecommerce-xi-nine.vercel.app/",
-  },    
+
+    demo: {
+      tersedia: true,
+      keterangan:
+        "Tersedia halaman admin dan seller dashboard untuk mengelola produk serta transaksi marketplace.",
+      email: "admin@gmail.com",
+      password: "123456",
+    },
+  },
+
   {
     id: 5,
     gambar: Proyek5,
     nama: "Landing Page 3D",
-    desk: "Landing page InovaTech mengusung konsep 3D modern dengan visual elemen geometris dan karakter abstrak yang memberikan kesan futuristik dan inovatif. Desain tiga dimensi digunakan untuk menarik perhatian sejak pertama kali pengguna membuka halaman, sekaligus memperkuat identitas InovaTech sebagai platform teknologi yang berorientasi pada developer.",
-    tools: ["React", "TailwindCSS", "Spline", "Javascript","Vite"],
+    desk: "Landing page InovaTech mengusung konsep 3D modern dengan visual elemen geometris dan karakter abstrak.",
+    tools: ["React", "TailwindCSS", "Spline", "Javascript", "Vite"],
     dad: "300",
     link: "https://portofolio-3dlandingpage.vercel.app/",
+
+    demo: {
+      tersedia: false,
+      keterangan:
+        "Project ini merupakan landing page showcase berbasis animasi 3D tanpa sistem login admin.",
+    },
   },
 ];
