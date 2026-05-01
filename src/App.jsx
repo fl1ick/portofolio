@@ -380,6 +380,7 @@ function App() {
                 <div className="mt-8 text-center">
                   <button
                     onClick={() => {
+                      setSelectedProject(proyek);
                       setPreviewUrl(proyek.link);
                       setShowModal(true);
                     }}
