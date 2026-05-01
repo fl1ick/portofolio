@@ -399,29 +399,33 @@ function App() {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 sm:px-4">
           <div
-            className="w-full max-w-5xl rounded-xl overflow-hidden relative mx-auto max-h-[95vh] flex flex-col"
-            style={{
-              background: colors.card,
-              border: `1px solid ${colors.border}`,
-            }}
+            className="flex justify-between items-center p-3 sm:p-4 border-b"
+            style={{ borderColor: colors.border }}
           >
-            {/* Header */}
-            <div
-              className="flex justify-between items-center p-3 sm:p-4 border-b"
-              style={{ borderColor: colors.border }}
+            <h2
+              className="font-bold text-sm sm:text-lg"
+              style={{ color: colors.text }}
             >
-              <h2
-                className="font-bold text-sm sm:text-lg"
-                style={{ color: colors.text }}
-              >
-                Preview Website
-              </h2>
+              Preview Website
+            </h2>
 
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Fullscreen */}
+              <a
+                href={previewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-md text-[10px] sm:text-sm font-semibold bg-yellow-500 text-black hover:opacity-80 transition"
+              >
+                Full Screen ↗
+              </a>
+
+              {/* Close */}
               <button
                 onClick={() => setShowModal(false)}
                 className="text-sm sm:text-xl font-bold text-yellow-500 hover:text-red-500"
               >
-                Kembali ✕
+                ✕
               </button>
             </div>
 
